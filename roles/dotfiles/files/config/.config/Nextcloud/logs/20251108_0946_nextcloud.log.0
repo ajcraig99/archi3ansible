@@ -1,0 +1,285 @@
+2025-11-08 09:46:48:201 [ info nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/application.cpp:739 ]:	################## "Nextcloud" locale: "en_US" ui_lang: QVariant(Invalid) version: "4.0.1daily" os: "Arch Linux"
+2025-11-08 09:46:48:201 [ info nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/application.cpp:744 ]:	Arguments: QList("/usr/bin/nextcloud", "--background")
+2025-11-08 09:46:48:201 [ info nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/application.cpp:1020 ]:	System UI languages are: QList("en-Latn-US", "en-US", "en-Latn", "en")
+2025-11-08 09:46:48:201 [ info nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/application.cpp:1023 ]:	selected application language: "en_Latn_US"
+2025-11-08 09:46:48:201 [ info nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/application.cpp:1043 ]:	Using "en_Latn_US" translation
+2025-11-08 09:46:48:202 [ info nextcloud.gui.account.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/accountmanager.cpp:158 ]:	Checking for accounts versions.
+2025-11-08 09:46:48:202 [ info nextcloud.gui.account.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/accountmanager.cpp:159 ]:	Config accounts version: 13
+2025-11-08 09:46:48:202 [ info nextcloud.gui.account.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/accountmanager.cpp:160 ]:	Max accounts Version is set to: 13
+2025-11-08 09:46:48:202 [ info nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/application.cpp:136 ]:	Version changed. Removing updater settings from config.
+2025-11-08 09:46:48:211 [ info nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/application.cpp:373 ]:	VFS suffix plugin is available
+2025-11-08 09:46:48:211 [ warning qt.core.qobject.connect unknown:0 ]:	QObject::connect(OCC::NextcloudTheme, Unknown): invalid nullptr parameter
+2025-11-08 09:46:48:211 [ info nextcloud.gui.socketapi /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/socketapi/socketapi.cpp:300 ]:	server started, listening at  "/run/user/1000/Nextcloud/socket"
+2025-11-08 09:46:48:211 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:68 ]:	setting remote poll timer interval to 30000 msec
+2025-11-08 09:46:48:211 [ info nextcloud.gui.account.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/accountmanager.cpp:158 ]:	Checking for accounts versions.
+2025-11-08 09:46:48:211 [ info nextcloud.gui.account.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/accountmanager.cpp:159 ]:	Config accounts version: 13
+2025-11-08 09:46:48:211 [ info nextcloud.gui.account.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/accountmanager.cpp:160 ]:	Max accounts Version is set to: 13
+2025-11-08 09:46:48:211 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:355 ]:	Setup folders from  "/home/arron/.config/Nextcloud/" (migration)
+2025-11-08 09:46:48:211 [ warning nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/application.cpp:530 ]:	Migration result AccountManager::AccountsRestoreResult:  OCC::AccountManager::AccountsRestoreSuccess
+2025-11-08 09:46:48:211 [ warning nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/application.cpp:531 ]:	Folders migrated:  0
+2025-11-08 09:46:48:211 [ warning nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/application.cpp:532 ]:	No accounts were migrated, prompting user to set up accounts and folders from scratch.
+2025-11-08 09:46:48:226 [ warning qt.qml.typeregistration unknown:0 ]:	Invalid QML element name "Activity"; value type names should begin with a lowercase letter
+2025-11-08 09:46:48:226 [ warning qt.qml.typeregistration unknown:0 ]:	Invalid QML element name "TalkNotificationData"; value type names should begin with a lowercase letter
+2025-11-08 09:46:48:226 [ warning qt.qml.typeregistration unknown:0 ]:	Invalid QML element name "UserStatus"; value type names should begin with a lowercase letter
+2025-11-08 09:46:48:226 [ warning qt.qml.typeregistration unknown:0 ]:	Invalid QML element name "Sharee"; value type names should begin with a lowercase letter
+2025-11-08 09:46:48:226 [ info nextcloud.sync.clientproxy /usr/src/debug/nextcloud-client/nextcloud-client/src/libsync/clientproxy.cpp:105 ]:	Set proxy configuration to use the preferred system proxy for http tcp connections
+2025-11-08 09:46:48:231 [ warning qt.core.qobject.connect unknown:0 ]:	QObject::connect(QNetworkInformation, OCC::Application): invalid nullptr parameter
+2025-11-08 09:46:48:498 [ warning default qrc:/qml/src/gui/tray/MainWindow.qml:492 ]:	qrc:/qml/src/gui/tray/MainWindow.qml:492:13: QML Connections: Detected function "onInteractiveActivityReceived" in Connections element. This is probably intended to be a signal handler but no signal of the target matches the name.
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/TrayFoldersMenuButton.qml:20 ]:	qrc:/qml/src/gui/tray/TrayFoldersMenuButton.qml:20: TypeError: Cannot read property 'groupFolders' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/TrayWindowHeader.qml:57 ]:	qrc:/qml/src/gui/tray/TrayWindowHeader.qml:57: TypeError: Cannot read property 'hasLocalFolder' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/TrayWindowHeader.qml:77 ]:	qrc:/qml/src/gui/tray/TrayWindowHeader.qml:77: TypeError: Cannot read property 'isFeaturedAppEnabled' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/TrayWindowHeader.qml:82 ]:	qrc:/qml/src/gui/tray/TrayWindowHeader.qml:82: TypeError: Cannot read property 'featuredAppAccessibleName' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/TrayWindowHeader.qml:78 ]:	qrc:/qml/src/gui/tray/TrayWindowHeader.qml:78: TypeError: Cannot read property 'featuredAppIcon' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/MainWindow.qml:275 ]:	qrc:/qml/src/gui/tray/MainWindow.qml:275: TypeError: Cannot read property 'unifiedSearchResultsListModel' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/MainWindow.qml:274 ]:	qrc:/qml/src/gui/tray/MainWindow.qml:274: TypeError: Cannot read property 'isConnected' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/MainWindow.qml:273 ]:	qrc:/qml/src/gui/tray/MainWindow.qml:273: TypeError: Cannot read property 'unifiedSearchResultsListModel' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/MainWindow.qml:298 ]:	qrc:/qml/src/gui/tray/MainWindow.qml:298: TypeError: Cannot read property 'unifiedSearchResultsListModel' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/MainWindow.qml:346 ]:	qrc:/qml/src/gui/tray/MainWindow.qml:346: TypeError: Cannot read property 'unifiedSearchResultsListModel' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/MainWindow.qml:384 ]:	qrc:/qml/src/gui/tray/MainWindow.qml:384: TypeError: Cannot read property 'unifiedSearchResultsListModel' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/SyncStatus.qml:105 ]:	qrc:/qml/src/gui/tray/SyncStatus.qml:105: TypeError: Cannot read property 'hasLocalFolder' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/SyncStatus.qml:120 ]:	qrc:/qml/src/gui/tray/SyncStatus.qml:120:9: Unable to assign [undefined] to bool
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/SyncStatus.qml:133 ]:	qrc:/qml/src/gui/tray/SyncStatus.qml:133: TypeError: Cannot read property 'needsToSignTermsOfService' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/MainWindow.qml:297 ]:	qrc:/qml/src/gui/tray/MainWindow.qml:297: TypeError: Cannot read property 'unifiedSearchResultsListModel' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/MainWindow.qml:325 ]:	qrc:/qml/src/gui/tray/MainWindow.qml:325: TypeError: Cannot read property 'unifiedSearchResultsListModel' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/MainWindow.qml:328 ]:	qrc:/qml/src/gui/tray/MainWindow.qml:328: TypeError: Cannot read property 'unifiedSearchResultsListModel' of null
+2025-11-08 09:46:48:528 [ warning default qrc:/qml/src/gui/tray/MainWindow.qml:327 ]:	qrc:/qml/src/gui/tray/MainWindow.qml:327: TypeError: Cannot read property 'unifiedSearchResultsListModel' of null
+2025-11-08 09:46:48:529 [ info nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/main.cpp:170 ]:	System tray is not available, waiting...
+2025-11-08 09:46:49:530 [ info nextcloud.gui.application /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/owncloudgui.cpp:202 ]:	No configured folders yet, starting setup wizard
+2025-11-08 09:46:49:620 [ info nextcloud.gui.wizard.webviewpage /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/wizard/webviewpage.cpp:30 ]:	Time for a webview!
+2025-11-08 09:46:52:627 [ info nextcloud.gui.wizard /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/owncloudsetupwizard.cpp:715 ]:	Rejected the new config, use the old!
+2025-11-08 09:47:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:47:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:47:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:47:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:47:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:47:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:48:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:48:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:48:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:48:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:48:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:48:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:49:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:49:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:49:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:49:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:49:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:49:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:50:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:50:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:50:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:50:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:50:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:50:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:51:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:51:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:51:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:51:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:51:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:51:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:52:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:52:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:52:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:52:47:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:52:47:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:52:47:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:53:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:53:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:53:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:53:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:53:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:53:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:54:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:54:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:54:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:54:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:54:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:54:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:55:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:55:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:55:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:55:47:938 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:55:47:938 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:55:47:938 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:56:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:56:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:56:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:56:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:56:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:56:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:57:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:57:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:57:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:57:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:57:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:57:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:58:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:58:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:58:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:58:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:58:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:58:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:59:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:59:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:59:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 09:59:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 09:59:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 09:59:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:00:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:00:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:00:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:00:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:00:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:00:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:01:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:01:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:01:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:01:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:01:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:01:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:02:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:02:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:02:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:02:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:02:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:02:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:03:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:03:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:03:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:03:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:03:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:03:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:04:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:04:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:04:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:04:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:04:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:04:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:05:17:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:05:17:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:05:17:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:05:47:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:05:47:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:05:47:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:06:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:06:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:06:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:06:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:06:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:06:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:07:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:07:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:07:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:07:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:07:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:07:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:08:17:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:08:17:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:08:17:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:08:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:08:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:08:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:09:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:09:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:09:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:09:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:09:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:09:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:10:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:10:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:10:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:10:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:10:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:10:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:11:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:11:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:11:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:11:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:11:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:11:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:12:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:12:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:12:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:12:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:12:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:12:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:13:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:13:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:13:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:13:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:13:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:13:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:14:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:14:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:14:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:14:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:14:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:14:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:15:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:15:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:15:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:15:47:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:15:47:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:15:47:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:16:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:16:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:16:17:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:16:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:16:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:16:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:17:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:17:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:17:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:17:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:17:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:17:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:18:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:18:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:18:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:18:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:18:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:18:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:19:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:19:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:19:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:19:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:19:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:19:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:20:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:20:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:20:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:20:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:20:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:20:47:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:21:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:21:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:21:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:21:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:21:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:21:47:940 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:22:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:22:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:22:17:941 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:22:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:22:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:22:47:942 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:23:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:23:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:23:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:23:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:23:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:23:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:24:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:24:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:24:17:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:24:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:24:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:24:47:939 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:25:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:25:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:25:17:944 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:25:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:25:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0
+2025-11-08 10:25:47:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1038 ]:	Number of folders that don't use push notifications: 0
+2025-11-08 10:26:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1024 ]:	Etag poll timer timeout
+2025-11-08 10:26:17:943 [ info nextcloud.gui.folder.manager /usr/src/debug/nextcloud-client/nextcloud-client/src/gui/folderman.cpp:1028 ]:	Folders to sync: 0

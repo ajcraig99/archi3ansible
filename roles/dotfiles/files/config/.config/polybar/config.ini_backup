@@ -1,0 +1,281 @@
+;==========================================================
+;
+;   Polybar config - Gruvbox Theme
+;
+;==========================================================
+
+[colors]
+; Gruvbox Dark Hard
+background = #1d2021
+background-alt = #282828
+foreground = #ebdbb2
+foreground-alt = #a89984
+primary = #83a598
+secondary = #fabd2f
+alert = #fb4934
+success = #b8bb26
+warning = #fe8019
+blue = #458588
+purple = #d3869b
+aqua = #8ec07c
+orange = #fe8019
+red = #fb4934
+green = #b8bb26
+yellow = #fabd2f
+
+; Bar appearance
+border-color = #83a598
+
+[bar/main]
+monitor = ${env:MONITOR:}
+height = 40
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+border-size = 18
+
+padding-left = 0
+padding-right = 0
+
+separator = "|"
+separator-padding = 0.5
+separator-foreground = ${colors.foreground-alt}
+
+module-margin-left = 1
+module-margin-right = 1
+
+; Fonts
+font-0 = "JetBrainsMono Nerd Font:size=10;3"
+font-1 = "JetBrainsMono Nerd Font:size=12;3"
+font-2 = "JetBrainsMono Nerd Font:size=14;3"
+font-3 = "JetBrainsMono Nerd Font:size=16;3"
+; Module layout
+modules-left = i3
+modules-center = date time
+
+modules-right = mpris battery cpu idle-toggle screenshot screenrecord wireguard network bluetooth pulseaudio brightness power
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+enable-ipc = true
+
+; Positioning
+;override-redirect = true
+offset-x = 0
+offset-y = 0
+width = 100%
+
+;==========================================================
+; MODULES
+;==========================================================
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+pin-workspaces = true
+show-urgent = true
+strip-wsnumbers =  false
+; Icons for workspaces
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-default = 
+
+; Focused workspace
+label-focused = %icon%
+label-focused-foreground = ${colors.blue}
+label-focused-background = ${colors.background-alt}
+label-focused-padding = 2
+
+; Unfocused workspace
+label-unfocused = %icon%
+label-unfocused-foreground = ${colors.foreground-alt}
+label-unfocused-background = ${colors.background-alt}
+label-unfocused-padding = 2
+
+; Visible but not focused
+label-visible = %icon%
+label-visible-foreground = ${colors.foreground}
+label-visible-background = ${colors.background-alt}
+label-visible-padding = 2
+
+; Urgent workspace
+label-urgent = %icon%
+label-urgent-foreground = ${colors.alert}
+label-urgent-background = ${colors.background-alt}
+label-urgent-padding = 2
+
+[module/date]
+type = internal/date
+interval = 3600
+date = %A %b %e
+format = <label>
+label = %date%
+label-font = 2
+format-foreground = ${colors.foreground}
+
+[module/time]
+type = internal/date
+interval = 1
+time = %H.%M.%S %p
+format = <label>
+label = %time%
+label-font = 2
+format-foreground = ${colors.foreground}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 90
+
+; Custom battery icons using Nerd Fonts
+format-charging = <ramp-capacity> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = %percentage%%
+
+; Battery icon ramp (empty to full)
+ramp-capacity-0 = 󰁺
+ramp-capacity-1 = 󰁼
+ramp-capacity-2 = 󰁾
+ramp-capacity-3 = 󰂁
+ramp-capacity-4 = 󰁹
+
+ramp-capacity-0-foreground = ${colors.alert}
+ramp-capacity-1-foreground = ${colors.warning}
+ramp-capacity-2-foreground = ${colors.warning}
+ramp-capacity-foreground = ${colors.success}
+
+animation-charging-0 = 󰢜
+animation-charging-1 = 󰂆
+animation-charging-2 = 󰂇
+animation-charging-3 = 󰂈
+animation-charging-4 = 󰢝
+
+animation-charging-framerate = 750
+animation-charging-foreground = ${colors.green}
+
+label-charging-font = 2
+label-discharging-font = 0
+ramp-capacity-font = 3
+animation-charging-font = 3
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.foreground}
+label = %percentage:2%%
+format-prefix-font = 0
+
+[module/network]
+type = custom/script
+exec = ~/.config/polybar/scripts/network.sh
+interval = 5
+click-left = networkmanager_dmenu
+click-right = rfkill toggle wifi
+format-font = 0
+
+[module/bluetooth]
+type = custom/script
+exec = ~/.config/polybar/scripts/bluetooth.sh
+interval = 5
+click-left = blueberry &
+click-right = rfkill toggle bluetooth
+format-font = 3
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${colors.foreground}
+
+format-muted = <label-muted>
+label-muted = 󰖁 %percentage%%
+label-muted-foreground = ${colors.foreground-alt}
+
+ramp-volume-0 = 󰕿
+ramp-volume-1 = 
+ramp-volume-2 = 󰕾
+ramp-volume-font = 3
+
+click-right = pavucontrol &
+click-left = pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+[module/brightness]
+type = custom/script
+exec = ~/.config/polybar/scripts/brightness.sh
+interval = 10
+scroll-up = brightnessctl set +5%
+scroll-down = brightnessctl set 5%-
+format-font = 0
+
+[module/screenshot]
+type = custom/text
+format = 󰄀 
+format-font = 3
+click-left = flameshot gui --path ~/Pictures/Screenshots/ --clipboard
+click-right = RESOLUTION=$(xrandr | grep ' connected primary' | grep -oP '\d+x\d+\+\d+\+\d+'); flameshot gui --region $RESOLUTION --path ~/Pictures/Screenshots/ --clipboard
+
+[module/screenrecord]
+type = custom/script
+exec = ~/.config/polybar/scripts/screenrecord.sh
+interval = 1
+click-left = ~/.config/polybar/scripts/screenrecord-toggle.sh area
+click-right = ~/.config/polybar/scripts/screenrecord-toggle.sh full
+format-font = 3
+
+[module/wireguard]
+type = custom/script
+exec = ~/.config/polybar/scripts/wireguard.sh
+tail = false
+interval = 1
+click-left = ~/.config/polybar/scripts/wireguard.sh --toggle &
+
+[module/idle-toggle]
+type = custom/script
+exec = ~/.config/polybar/scripts/idle-toggle.sh status
+interval = 1
+click-left = ~/.config/polybar/scripts/idle-toggle.sh toggle
+format-font = 3
+
+[module/power]
+type = custom/text
+format = 
+format-foreground = ${colors.alert}
+format-font = 3
+click-left = i3-msg exit
+
+[module/mpris]
+type = custom/script
+exec = ~/.config/polybar/scripts/mpris.sh
+interval = 1
+click-left = playerctl play-pause
+click-right = playerctl next
+click-middle = playerctl previous
+format-font = 1
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = false
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0

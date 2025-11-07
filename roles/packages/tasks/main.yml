@@ -1,0 +1,188 @@
+---
+- name: Install official repository packages
+  pacman:
+    name:
+      # System essentials
+      - base-devel
+      - git
+      - curl
+      - wget
+      - rsync
+      - unzip
+      - unrar
+      - 7zip
+      - tree
+      - which
+      - less
+      - nano
+      - micro
+      - neovim
+      
+      # Shell
+      - zsh
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+      
+      # System monitoring
+      - htop
+      - btop
+      - iotop
+      - powertop
+      - acpi
+      - hwinfo
+      
+      # Network
+      - networkmanager
+      - network-manager-applet
+      - openresolv
+      - wireguard-tools
+      - cifs-utils
+      
+      # Bluetooth
+      - bluez
+      - bluez-utils
+      - blueman
+      
+      # Power management
+      - tlp
+      - thermald
+      - brightnessctl
+      
+      # Display/GPU
+      - xorg-server
+      - xorg-xinput
+      - xorg-xrandr
+      - xorg-xev
+      - xorg-xmodmap
+      - xorg-xdpyinfo
+      - xf86-video-intel
+      - nvidia
+      - nvidia-utils
+      - nvidia-settings
+      - intel-gpu-tools
+      - mesa-utils
+      - vulkan-tools
+      - intel-media-driver
+      - libva-utils
+      - vdpauinfo
+      - libvdpau-va-gl
+      
+      # i3 and related
+      - i3-wm
+      - i3status
+      - polybar
+      - dmenu
+      - rofi
+      - dunst
+      - picom
+      - feh
+      - flameshot
+      - xclip
+      - clipmenu
+      - xsettingsd
+      
+      # Terminal
+      - kitty
+      
+      # Display manager
+      - lightdm
+      - lightdm-webkit2-greeter
+      
+      # Audio
+      - pipewire
+      - pipewire-alsa
+      - pipewire-pulse
+      - pipewire-jack
+      - wireplumber
+      - pavucontrol
+      - easyeffects
+      
+      # File managers
+      - nemo
+      - nemo-fileroller
+      - thunar
+      - tumbler
+      - gvfs
+      
+      # Media
+      - mpv
+      - vlc
+      - vlc-plugin-ffmpeg
+      - ffmpeg
+      - gst-libav
+      - gst-plugins-good
+      - gst-plugins-bad
+      - imv
+      - cava
+      
+      # Browsers
+      - firefox
+      - chromium
+      
+      # Utilities
+      - bat
+      - eza
+      - fd
+      - ripgrep
+      - fzf
+      - fastfetch
+      - progress
+      - evtest
+      
+      # Development
+      - gcc
+      - make
+      - pkgconf
+      - python
+      - python-pip
+      - python-pipx
+      - mariadb
+      - avr-gcc
+      - avr-libc
+      - avrdude
+      - arm-none-eabi-gcc
+      - arm-none-eabi-binutils
+      - arm-none-eabi-newlib
+      - dfu-util
+      - dfu-programmer
+      
+      # Virtualization
+      - qemu-full
+      - virt-manager
+      - virt-viewer
+      - libguestfs
+      - bridge-utils
+      - dnsmasq
+      
+      # Theming
+      - qt5ct
+      - dconf-editor
+      - kvantum
+      
+      # Other apps
+      - gimp
+      - inkscape
+      - ddcutil
+      
+      # System tools
+      - btrfs-progs
+      - timeshift
+      - reflector
+      - rclone
+    state: present
+
+- name: Install yay (AUR helper)
+  block:
+    - name: Clone yay repository
+      git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: /tmp/yay
+      become: no
+        
+    - name: Build and install yay
+      shell: |
+        cd /tmp/yay
+        makepkg -si --noconfirm
+      args:
+        creates: /usr/bin/yay
+      become: no

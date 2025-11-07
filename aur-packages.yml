@@ -1,0 +1,80 @@
+---
+- name: Install AUR packages
+  hosts: localhost
+  connection: local
+  become: no
+
+  tasks:
+    - name: Install AUR packages with yay
+      shell: yay -S --noconfirm {{ item }}
+      loop:
+        - zsh-theme-powerlevel10k-git
+        - auto-cpufreq
+        - networkmanager-dmenu-git
+        - rofi-wifi-menu-git
+        - timeshift-autosnap
+        - swaync-git
+        - catppuccin-cursors-mocha
+        - catppuccin-gtk-theme-mocha
+        - gruvbox-dark-gtk
+        - gruvbox-dark-icons-gtk
+        - gruvbox-material-gtk-theme-git
+        - spotify-launcher
+        - obsidian
+        - onlyoffice-bin
+        - vesktop
+        - discord
+        - nextcloud-client
+      ignore_errors: yes
+EOF
+
+# Create fstab template
+cat > fstab-nas.txt << 'EOF'
+# NAS mounts - add these to /etc/fstab
+//192.168.20.115/Data /mnt/NAS/Data cifs noauto,x-systemd.automount,x-systemd.idle-timeout=600,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,username=arron,password=YOUR_PASSWORD,uid=1000,file_mode=0644,dir_mode=0755,vers=3.0,rsize=131072,wsize=131072,_netdev,soft,retrans=3,nofail 0 0
+//192.168.20.115/Media /mnt/NAS/Media cifs noauto,x-systemd.automount,x-systemd.idle-timeout=600,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,username=arron,password=YOUR_PASSWORD,uid=1000,file_mode=0644,dir_mode=0755,vers=3.0,rsize=131072,wsize=131072,_netdev,soft,retrans=3,nofail 0 0
+//192.168.20.115/Backups /mnt/NAS/Backups cifs noauto,x-systemd.automount,x-systemd.idle-timeout=600,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,username=arron,password=YOUR_PASSWORD,uid=1000,file_mode=0644,dir_mode=0755,vers=3.0,rsize=131072,wsize=131072,_netdev,soft,retrans=3,nofail 0 0
+EOF
+
+# Create README
+cat > README.md << 'EOF'
+# Arch Linux i3 Setup with Ansible
+
+## Usage
+
+### On a fresh Arch installation:
+
+1. Install Ansible:
+```bash
+sudo pacman -S ansible git
+```
+
+2. Clone this repo:
+```bash
+git clone <your-repo-url>
+cd ansible-arch
+```
+
+3. Run the main playbook:
+```bash
+ansible-playbook setup.yml --ask-become-pass
+```
+
+4. Run AUR packages playbook:
+```bash
+ansible-playbook aur-packages.yml
+```
+
+5. Copy your dotfiles:
+```bash
+# After cloning your dotfiles repo
+cp -r <dotfiles-repo>/.config/* ~/.config/
+```
+
+6. Manually add NAS mounts to /etc/fstab (see fstab-nas.txt)
+
+7. Reboot and enjoy!
+
+## TODO
+- Add dotfiles deployment task
+- Automate fstab entries (with vault for password)

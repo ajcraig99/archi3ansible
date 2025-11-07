@@ -1,0 +1,106 @@
+configuration {
+    show-icons: true;
+    font: "monospace 12";
+    display-drun: "Run script:";
+  
+}
+
+* {
+    background-color: #1d2021;
+    text-color: #fe8019;
+    border-color: #af3a03;
+}
+
+window {
+    width: 600px;
+    padding: 0px;
+    border: 2px;
+    border-radius: 0px;
+    background-color: #1d2021;
+}
+
+mainbox {
+    padding: 0px;
+    background-color: #1d2021;
+}
+
+inputbar {
+    padding: 10px;
+    background-color: #1d2021;
+    children: [prompt, entry];
+}
+
+prompt {
+    padding: 0px 10px 0px 0px;
+    text-color: #665c54;
+    background-color: #1d2021;
+}
+
+entry {
+    text-color: #665c54;
+    background-color: #1d2021;
+    placeholder: "Search";
+    placeholder-color: #665c54;
+}
+
+listview {
+    lines: 15;
+    padding: 5px;
+    scrollbar: false;
+    background-color: #1d2021;
+}
+
+element {
+    background-color: #1d2021;
+    text-color: #665c54;
+}
+
+element-text {
+    background-color: #1d2021;
+    text-color: #665c54;
+}
+
+element normal {
+    background-color: #1d2021;
+    text-color: #fe8019;
+    border: 0px;
+}
+
+element normal.normal {
+    background-color: #1d2021;
+    text-color: #fe8019;
+    border: 0px;
+}
+
+
+element selected {
+    padding: 2px;
+    background-color: #282828;
+    text-color: #fe8019;
+}
+
+element selected.normal {
+    background-color: #282828;
+    text-color: #fe8019;
+}
+element-text selected {
+    background-color: #282828;
+    text-color: #fe8019;
+}
+
+element-text alternate {
+    background-color: #1d2021;
+    text-color: #665c54;
+}
+
+element alternate.normal {
+    background-color: #1d2021;
+    text-color: #fe8019;
+    border: 0px;
+}
+
+element alternate {
+    background-color: #1d2021;
+    text-color: #fe8019;
+    border: 0px;
+}

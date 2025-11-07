@@ -1,0 +1,12 @@
+[General]
+clientVersion=3.17.3daily
+isVfsEnabled=false
+launchOnSystemStartup=true
+optionalServerNotifications=true
+promptDeleteAllFiles=false
+showCallNotifications=true
+showChatNotifications=true
+showInExplorerNavigationPane=false
+
+[Accounts]
+version=13

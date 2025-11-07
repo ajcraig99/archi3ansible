@@ -1,0 +1,63 @@
+---
+- name: Setup Arch Linux with i3
+  hosts: localhost
+  connection: local
+  vars:
+    user_name: arron
+
+  pre_tasks:
+    - name: Update system
+      pacman:
+        update_cache: yes
+        upgrade: yes
+      become: yes
+
+  roles:
+    - role: packages
+      become: yes
+    - role: dotfiles
+      become: yes
+
+  post_tasks:
+    - name: Enable systemd services
+      systemd:
+        name: "{{ item }}"
+        enabled: yes
+      become: yes
+      loop:
+        - bluetooth.service
+        - libvirtd.service
+        - lightdm.service
+        - NetworkManager.service
+        - NetworkManager-dispatcher.service
+        - NetworkManager-wait-online.service
+        - thermald.service
+        - tlp.service
+        - nvidia-suspend.service
+        - nvidia-hibernate.service
+        - nvidia-resume.service
+        - fstrim.timer
+        - libvirtd.socket
+        - libvirtd-ro.socket
+        - virtlogd.socket
+        - virtlockd.socket
+
+    - name: Create mount points for NAS
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+        mode: '0755'
+      become: yes
+      loop:
+        - /mnt/NAS/Data
+        - /mnt/NAS/Media
+        - /mnt/NAS/Backups
+
+    - name: Add user to necessary groups
+      user:
+        name: "{{ user_name }}"
+        groups: libvirt,video,input
+        append: yes
+      become: yes

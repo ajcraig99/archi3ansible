@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Directory containing your scripts
+SCRIPT_DIR="$HOME/scripts"
+
+# Get list of executable scripts
+cd "$SCRIPT_DIR" || exit
+script=$(ls -1 | rofi -dmenu -i -p "Run script:" -theme ~/.config/rofi/scriptmenu.rasi)
+
+# Execute the selected script
+if [ -n "$script" ]; then
+    "$SCRIPT_DIR/$script"
+fi

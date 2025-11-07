@@ -1,0 +1,5 @@
+gtk-application-prefer-dark-theme=1
+gtk-theme-name="catppuccin-mocha-blue-standard"
+gtk-icon-theme-name="Adwaita"
+gtk-cursor-theme-name="catppuccin-mocha-dark-cursors"
+gtk-font-name="Sans 11"

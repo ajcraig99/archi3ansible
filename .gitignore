@@ -1,0 +1,28 @@
+# Sensitive files
+**/password*
+**/credentials*
+
+# Backup files
+*.backup
+*~
+
+# Ansible retry files
+*.retry
+
+# Application data/cache
+**/chromium/
+**/obsidian/
+**/vesktop/
+**/discord/
+**/spotify/
+**/spicetify/
+**/dconf/
+**/.snapshots/
+**/pulse/
+**/GIMP/
+**/kdeconnect/*.pem
+**/kdeconnect/*.key
+
+# System generated
+**/menus/
+**/procps/

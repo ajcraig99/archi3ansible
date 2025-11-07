@@ -1,0 +1,6 @@
+# Always scale image to fit the screen
+--scale-down
+--auto-zoom
+
+# Sort files by name
+--sort filename

@@ -1,0 +1,90 @@
+---
+- name: Ensure .config directory exists
+  file:
+    path: "/home/{{ user_name }}/.config"
+    state: directory
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: '0755'
+
+- name: Deploy i3 config
+  copy:
+    src: config/i3/
+    dest: "/home/{{ user_name }}/.config/i3/"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: '0644'
+  when: "'i3' in ansible_facts.packages or true"
+
+- name: Deploy polybar config
+  copy:
+    src: config/polybar/
+    dest: "/home/{{ user_name }}/.config/polybar/"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: '0755'
+  when: dotfiles_stat.stat.exists
+
+- name: Deploy kitty config
+  copy:
+    src: config/kitty/
+    dest: "/home/{{ user_name }}/.config/kitty/"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: '0644'
+
+- name: Deploy rofi config
+  copy:
+    src: config/rofi/
+    dest: "/home/{{ user_name }}/.config/rofi/"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: '0644'
+
+- name: Deploy dunst config
+  copy:
+    src: config/dunst/
+    dest: "/home/{{ user_name }}/.config/dunst/"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: '0644'
+
+- name: Deploy picom config
+  copy:
+    src: config/picom/
+    dest: "/home/{{ user_name }}/.config/picom/"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: '0644'
+
+- name: Deploy all other config directories
+  synchronize:
+    src: config/
+    dest: "/home/{{ user_name }}/.config/"
+    recursive: yes
+    delete: no
+  delegate_to: localhost
+  become: no
+
+- name: Deploy .zshrc
+  copy:
+    src: zshrc
+    dest: "/home/{{ user_name }}/.zshrc"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: '0644'
+
+- name: Deploy .p10k.zsh
+  copy:
+    src: p10k.zsh
+    dest: "/home/{{ user_name }}/.p10k.zsh"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: '0644'
+  ignore_errors: yes
+
+- name: Set zsh as default shell
+  user:
+    name: "{{ user_name }}"
+    shell: /bin/zsh
+  become: yes

@@ -1,0 +1,68 @@
+# Enable Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# History configuration
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_VERIFY SHARE_HISTORY APPEND_HISTORY INC_APPEND_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE
+
+# Load Powerlevel10k theme (try different possible locations)
+if [[ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]]; then
+    source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+elif [[ -f /usr/share/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+    source /usr/share/powerlevel10k/powerlevel10k.zsh-theme
+fi
+
+# Load plugins
+[[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fzf integration
+[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
+[[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
+
+# Auto-completion
+autoload -U compinit && compinit
+
+# Your aliases
+alias ll="ls -l"
+alias la="ls -la"
+alias ls="eza"
+alias cat="bat"
+alias rebuild="sudo pacman -Syu"
+alias hyprlandconfig="nano ~/.config/hypr/hyprland.conf"
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
+alias gl="git log --oneline"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ff="fastfetch"
+alias clean="sudo pacman -Sc && yay -Sc"
+
+# Fix delete key
+bindkey "^[[3~" delete-char
+bindkey "^[3;5~" delete-char
+
+# Also fix other common keys while we're at it
+bindkey "^[[H" beginning-of-line    # Home
+bindkey "^[[F" end-of-line          # End
+bindkey "^[[2~" overwrite-mode      # Insert
+bindkey "^[[5~" up-line-or-history  # Page Up
+bindkey "^[[6~" down-line-or-history # Page Down
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export XDG_DOWNLOAD_DIR="$HOME/Downloads"
+export XDG_DESKTOP_DIR="$HOME/Desktop"
+export XDG_DOCUMENTS_DIR="$HOME/Documents"
+
+export PATH=$PATH:/home/arron/.spicetify
+
+# Created by `pipx` on 2025-10-16 07:47:49
+export PATH="$PATH:/home/arron/.local/bin"
