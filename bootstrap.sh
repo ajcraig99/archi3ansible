@@ -1,13 +1,17 @@
 #!/bin/bash
 set -e
 
-# 1. Install Git and Ansible
-echo "--> Installing Git and Ansible..."
+# 1. Update System & Install Git + Ansible
+echo "--> Updating system and installing Git & Ansible..."
 sudo pacman -Sy --noconfirm git ansible
 
+# --- NEW STEP: Install Ansible Collections ---
+echo "--> Installing Ansible Plugins (AUR support)..."
+ansible-galaxy collection install community.general kewlfft.aur
+# ---------------------------------------------
+
 # 2. Clone the ANSIBLE Repo (Infrastructure)
-# REPLACE THIS WITH YOUR ANSIBLE REPO URL
-ANSIBLE_REPO="https://github.com/ajcraig99/archi3ansible.git"
+ANSIBLE_REPO="https://github.com/YOUR_USERNAME/arch-setup.git" 
 SETUP_DIR="$HOME/arch-setup"
 
 if [ -d "$SETUP_DIR" ]; then
@@ -20,12 +24,8 @@ else
 fi
 
 # 3. Run the Playbook
-# This will now:
-#   a. Install packages
-#   b. Clone your OTHER repo (dotfiles) automatically
-#   c. Symlink the config files
-echo "--> Running Playbook..."
+echo "--> Running Ansible Playbook..."
 cd "$SETUP_DIR"
 ansible-playbook playbook.yml --ask-become-pass
 
-echo "--> DONE! Reboot to enjoy."
+echo "--> DONE! Reboot your computer."
