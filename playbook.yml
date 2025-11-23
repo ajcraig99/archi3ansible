@@ -16,6 +16,7 @@
     pacman_packages:
    # --- System / Core ---
       - base-devel
+      - go
       - git
       - neovim
       - tree
@@ -128,6 +129,15 @@
   # TASKS: The logic that applies the variables above
   # ----------------------------------------------------------------
   tasks:
+
+    # --- STEP 1: Install Official Packages ---
+    - name: Install Pacman packages
+      become: true  # Requires sudo
+      community.general.pacman:
+        name: "{{ pacman_packages }}"
+        state: present
+        update_cache: true
+
     # --- PRE-REQ: Install Yay (AUR Helper) ---
     - name: Check if yay is installed
       command: which yay
@@ -142,25 +152,19 @@
       when: yay_check.rc != 0
 
     - name: Build and install yay
-      command: makepkg -si --noconfirm
+      command: makepkg -s --noconfirm
       args:
         chdir: /tmp/yay
       when: yay_check.rc != 0
+      become: false
 
-    # --- STEP 1: Install Official Packages ---
-    - name: Install Pacman packages
-      become: true  # Requires sudo
-      community.general.pacman:
-        name: "{{ pacman_packages }}"
-        state: present
-        update_cache: true
+    - name: Install yay (install binary)
+      shell: pacman -U --noconfirm *.pkg.tar.zst
+      args:
+        chdir: /tmp/yay
+      when: yay_check.rc != 0
+      become: true
 
-    # --- STEP 2: Install AUR Packages ---
-    - name: Install AUR packages
-      kewlfft.aur.aur:
-        name: "{{ aur_packages }}"
-        use: yay
-        state: present
     # --- Clone Dotfiles
     - name: Clone Dotfiles Repository
       git:
@@ -168,6 +172,14 @@
         dest: "{{ dotfiles_dir }}"
         update: yes
         force: yes
+
+    # --- STEP 2: Install AUR Packages ---
+    - name: Install AUR packages
+      kewlfft.aur.aur:
+        name: "{{ aur_packages }}"
+        use: yay
+        state: present
+
 
     # --- STEP 3: Create Directories ---
     - name: Ensure parent directories for configs exist
