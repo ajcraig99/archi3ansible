@@ -56,7 +56,6 @@
       - steam
       - discord              # Standard discord (use Vesktop in AUR if prefered)
       - simple-scan
-      - xsane
 
       # --- Hyprland / Wayland Utils ---
       - hyprland
