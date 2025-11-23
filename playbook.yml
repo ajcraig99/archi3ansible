@@ -130,6 +130,16 @@
   # ----------------------------------------------------------------
   tasks:
 
+   # --- PRE-REQ: Enable Multilib (Needed for Steam) ---
+    - name: Enable Multilib repository
+      become: true
+      replace:
+        path: /etc/pacman.conf
+        regexp: '^#\[multilib\]\n#Include = /etc/pacman.d/mirrorlist'
+        replace: '[multilib]\nInclude = /etc/pacman.d/mirrorlist'
+
+
+
     # --- STEP 1: Install Official Packages ---
     - name: Install Pacman packages
       become: true  # Requires sudo
