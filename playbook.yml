@@ -14,102 +14,99 @@
 
     # 2. Official Arch Packages (Pacman)
     pacman_packages:
-   # --- System / Core ---
-      - base-devel
-      - go
+
+# --- System / Build ---
+      - base-devel            # CRITICAL for AUR
+      - go                    # CRITICAL for Yay
       - git
       - neovim
       - tree
       - fastfetch
-      - btop                 # System Monitor
+      - btop
+      - unzip
+      - man-db
+      - usbutils
+      - bluez
+      - bluez-utils
+
+      # --- Audio / Media ---
       - pipewire
       - pipewire-pulse
       - pavucontrol
-      - bluez                # Bluetooth backend
-      - bluez-utils
-      - usbutils
-      - cifs-utils           # SMB mounting
-      - man-db
-      - unzip
-      - p7zip
       - ffmpeg
-      - jq
-      - socat
-
-      # --- GUI Apps ---
-      - firefox
-      - kitty
-      - dolphin              # File Manager
-      - nemo                 # Alt File Manager
-      - nemo-fileroller
-      - gvfs                 # Required for Trash/Mounting
-      - tumbler              # Thumbnails (Not xfce.tumbler)
-      - webp-pixbuf-loader   # WebP support
       - vlc
       - mpv
-      - gthumb               # Image Viewer
-      - loupe                # Alt Image Viewer
+      - gthumb
+      - loupe
       - gimp
-      - inkscape             # Includes extensions by default on Arch
-      - gnome-calendar
-      - obsidian
-      - steam
-      - discord              # Standard discord (use Vesktop in AUR if prefered)
-      - simple-scan
+      - inkscape
+      - yt-dlp
 
-      # --- Hyprland / Wayland Utils ---
+      # --- Hyprland & Wayland Core ---
       - hyprland
-      - waybar
-      - wofi                 # Keep as backup
-      - rofi-wayland         # Primary launcher (official repo)
-      - hyprpaper            # Wallpaper (Static)
+      - hyprpaper
       - hyprlock
       - hypridle
+      - waybar
+      - rofi-wayland          # Note: NOT "rofi"
+      - swaync                # Correct name for "swaynotificationcenter"
       - wl-clipboard
-      - grim                 # Screenshots
-      - slurp                # Selection tool
-      - libnotify            # Notifications
-      - swaynotificationcenter
-      - playerctl            # Media keys support
+      - grim
+      - slurp
+      - libnotify
+      - playerctl
+
+      # --- File Management ---
+      - dolphin
+      - nemo
+      - nemo-fileroller       # This IS in official repos
+      - file-roller           # Backend for nemo-fileroller
+      - gvfs                  # For trash/mounting
+      - tumbler               # Correct name for "xfce.tumbler"
+      - webp-pixbuf-loader    # For thumbnails
 
       # --- Shell / Terminal ---
+      - kitty
       - zsh
       - zsh-autosuggestions
       - zsh-syntax-highlighting
-      - zsh-theme-powerlevel10k # Note the name change!
+      - zsh-theme-powerlevel10k
       - fzf
       - bat
       - eza
-      - ttf-jetbrains-mono-nerd # Font
-      - yt-dlp
+      - ttf-jetbrains-mono-nerd
+
+      # --- Apps ---
+      - firefox
+      - discord
+      - steam
+      - obsidian
+      - gnome-calendar
+      - simple-scan
+      - xsane
+      - jq
+      - socat
 
     # 3. AUR Packages (Yay)
     aur_packages:
-    # --- Apps ---
       - google-chrome
       - visual-studio-code-bin
-      - vesktop-bin          # Better Discord client (Nix "vesktop")
-      - onlyoffice-bin       # Was in your pacman list, needs AUR
-      - peazip-qt-bin        # Archive manager
-      - smath
-      - pdf4qt               # PDF viewer
-
-      # --- Hyprland Specifics ---
-      - wlogout              # Logout menu
-      - grimblast-git        # Screenshot wrapper
+      - vesktop-bin           # Better Discord (Optional)
+      - smath                 # Verified name
+      - wlogout               # Logout menu
+      - grimblast-git         # Screenshot script
+      - onlyoffice-bin
+      - peazip-qt-bin
+      - pdf4qt
       - waybar-module-pacman-updates-git
 
-      # --- Theming (From your Nix list) ---
+      # --- Theming ---
       - catppuccin-gtk-theme-mocha
       - catppuccin-cursors-mocha
       - dracula-gtk-theme
       - dracula-icons-git
       - capitaine-cursors
 
-
-
-      # 4. Configuration Symlinks
-    #    Format: { src: 'path/in/repo', dest: 'path/on/system' }
     symlinks:
 # Folders
       - { src: '.config/hypr',      dest: '.config/hypr' }
