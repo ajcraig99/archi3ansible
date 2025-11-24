@@ -106,6 +106,7 @@
       - catppuccin-cursors-mocha
       - dracula-gtk-theme
       - dracula-icons-git
+      - sddm-catppuccin-git
     symlinks:
 # Folders
       - { src: '.config/hypr',      dest: '.config/hypr' }
@@ -269,14 +270,6 @@
       become: true
       community.general.pacman:
         name: sddm
-        state: present
-
-    # 2. Install Theme (MUST RUN AS USER, NOT ROOT)
-    - name: Install SDDM Theme (Catppuccin)
-      become: false   # <--- This fixes the error
-      kewlfft.aur.aur:
-        name: sddm-catppuccin-git
-        use: yay
         state: present
 
     # 3. Configure SDDM to use the theme (Needs Root)
