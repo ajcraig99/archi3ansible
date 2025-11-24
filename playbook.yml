@@ -285,7 +285,7 @@
         dest: /etc/sddm.conf.d/theme.conf
         content: |
           [Theme]
-          Current=catppuccin-mocha
+          Current=/usr/share/sddm/themes/catppuccin-mocha
 
     # 4. Enable Service (Needs Root)
     - name: Enable SDDM Service
