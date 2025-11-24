@@ -9,7 +9,7 @@
   vars:
     # 1. The folder where your dotfiles are currently located (Source)
     #    If you cloned your repo to ~/dotfiles, leave as is.
-    dotfiles_dir: "/home/{{ ansible_user_id }}/dotfiles"
+    dotfiles_dir: "/home/{{ ansible_facts.user_id }}/dotfiles"
     dotfiles_repo_url: "https://github.com/ajcraig99/nixos_hyprland.git" 
 
     # 2. Official Arch Packages (Pacman)
@@ -191,7 +191,7 @@
       become: true
       lineinfile:
         path: /etc/sudoers.d/10-ansible-pacman
-        line: "{{ ansible_user_id }} ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+        line: "{{ ansible_facts.user_id }} ALL=(ALL) NOPASSWD: /usr/bin/pacman"
         create: yes
         mode: '0440'
         validate: 'visudo -cf %s'
@@ -209,33 +209,41 @@
       file:
         path: /etc/sudoers.d/10-ansible-pacman
         state: absent
-
-    # --- STEP 3: Create Directories ---
+# --- STEP 3: Create Directories ---
     - name: Ensure parent directories for configs exist
       file:
-        path: "/home/{{ ansible_user_id }}/{{ item.dest | dirname }}"
+        path: "/home/{{ ansible_facts.user_id }}/{{ item.dest | dirname }}"
         state: directory
         mode: '0755'
+      loop: "{{ symlinks }}"
+
+    # --- NEW TASK: Remove default config folders ---
+    # This deletes the default config folders created by package installation
+    # so that we can replace them with symlinks to your dotfiles.
+    - name: Clean up default config directories
+      file:
+        path: "/home/{{ ansible_facts.user_id }}/{{ item.dest }}"
+        state: absent
       loop: "{{ symlinks }}"
 
     # --- STEP 4: Link Dotfiles ---
     - name: Create Symlinks
       file:
         src: "{{ dotfiles_dir }}/{{ item.src }}"
-        dest: "/home/{{ ansible_user_id }}/{{ item.dest }}"
+        dest: "/home/{{ ansible_facts.user_id }}/{{ item.dest }}"
         state: link
         force: yes
       loop: "{{ symlinks }}"
 
-      # --- STEP 5: LazyVim Setup ---
+    # --- STEP 5: LazyVim Setup ---
     - name: Back up existing Nvim config (if any)
-      command: mv /home/{{ ansible_user_id }}/.config/nvim /home/{{ ansible_user_id }}/.config/nvim.bak
+      command: mv /home/{{ ansible_facts.user_id }}/.config/nvim /home/{{ ansible_facts.user_id }}/.config/nvim.bak
       args:
-        removes: /home/{{ ansible_user_id }}/.config/nvim
-        creates: /home/{{ ansible_user_id }}/.config/nvim.bak
+        removes: /home/{{ ansible_facts.user_id }}/.config/nvim
+        creates: /home/{{ ansible_facts.user_id }}/.config/nvim.bak
 
     - name: Install LazyVim (Clone Starter Repo)
       git:
         repo: https://github.com/LazyVim/starter
-        dest: /home/{{ ansible_user_id }}/.config/nvim
+        dest: /home/{{ ansible_facts.user_id }}/.config/nvim
         depth: 1
