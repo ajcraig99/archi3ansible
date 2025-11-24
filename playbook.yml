@@ -114,6 +114,7 @@
       - { src: '.config/fastfetch', dest: '.config/fastfetch' }
       - { src: '.config/nemo',      dest: '.config/nemo' }
       - { src: '.config/wlogout',   dest: '.config/wlogout' }
+      - { src: '.config/wallpapers', dest: '.config/wallpapers' }
       
       # Individual Files
       - { src: '.zshrc',            dest: '.zshrc' }
@@ -247,3 +248,65 @@
         repo: https://github.com/LazyVim/starter
         dest: /home/{{ ansible_facts.user_id }}/.config/nvim
         depth: 1
+
+    # --- STEP 6: System Services & Tweaks ---
+    - name: Enable essential services
+      become: true
+      systemd:
+        name: "{{ item }}"
+        enabled: true
+        state: started
+      loop:
+        - NetworkManager      # Internet
+        - bluetooth           # Bluetooth
+        - fstrim.timer        # CRITICAL for SSD health (runs weekly)
+
+    # Optional: Install a Graphical Login Screen (SDDM)
+    # If you are tired of typing 'Hyprland' in the black terminal to start:
+    - name: Install and Enable SDDM (Login Manager)
+      become: true
+      block:
+        - name: Install SDDM
+          community.general.pacman:
+            name: sddm
+            state: present
+        
+        # (Optional) Install a nice theme for SDDM
+        - name: Install SDDM Theme (Catppuccin)
+          kewlfft.aur.aur:
+            name: sddm-catppuccin-git
+            use: yay
+            state: present
+
+        - name: Enable SDDM Service
+          systemd:
+            name: sddm
+            enabled: true
+            state: started
+    # --- STEP 6: Apply Dark Theme (GTK) ---
+    - name: Ensure GTK-3.0 directory exists
+      file:
+        path: "/home/{{ ansible_facts.user_id }}/.config/gtk-3.0"
+        state: directory
+        mode: '0755'
+
+    - name: Configure GTK Dark Theme (Nemo/Firefox)
+      copy:
+        dest: "/home/{{ ansible_facts.user_id }}/.config/gtk-3.0/settings.ini"
+        content: |
+          [Settings]
+          gtk-theme-name=Catppuccin-Mocha-Standard-Mauve-Dark
+          gtk-icon-theme-name=Dracula
+          gtk-font-name=Sans 11
+          gtk-cursor-theme-name=Catppuccin-Mocha-Dark-Cursors
+          gtk-cursor-theme-size=24
+          gtk-toolbar-style=GTK_TOOLBAR_BOTH
+          gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+          gtk-button-images=1
+          gtk-menu-images=1
+          gtk-enable-event-sounds=1
+          gtk-enable-input-feedback-sounds=1
+          gtk-xft-antialias=1
+          gtk-xft-hinting=1
+          gtk-xft-hintstyle=hintfull
+          gtk-application-prefer-dark-theme=1
