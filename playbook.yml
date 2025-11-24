@@ -29,6 +29,7 @@
       - bluez
       - bluez-utils
       - wget
+      - nwg-displays
 
       # --- Audio / Media ---
       - pipewire
@@ -49,8 +50,8 @@
       - hyprlock
       - hypridle
       - waybar
-      - rofi-wayland          # Correct (Official)
-      - swaync                # Correct (Official)
+      - rofi-wayland          
+      - swaync               
       - wl-clipboard
       - grim
       - slurp
@@ -60,8 +61,8 @@
       # --- File Management ---
       - dolphin
       - nemo
-      - nemo-fileroller       # Correct (Official)
-      - file-roller           # Dependency for nemo-fileroller
+      - nemo-fileroller       
+      - file-roller          
       - gvfs
       - tumbler
       - webp-pixbuf-loader
@@ -83,7 +84,6 @@
       - obsidian
       - gnome-calendar
       - simple-scan
-      - xsane
       - jq
       - socat
 
@@ -106,7 +106,6 @@
       - catppuccin-cursors-mocha
       - dracula-gtk-theme
       - dracula-icons-git
-      - capitaine-cursors
     symlinks:
 # Folders
       - { src: '.config/hypr',      dest: '.config/hypr' }
