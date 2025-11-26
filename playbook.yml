@@ -10,7 +10,7 @@
     # 1. The folder where your dotfiles are currently located (Source)
     #    If you cloned your repo to ~/dotfiles, leave as is.
     dotfiles_dir: "/home/{{ ansible_facts.user_id }}/dotfiles"
-    dotfiles_repo_url: "https://github.com/ajcraig99/nixos_hyprland.git" 
+    dotfiles_repo_url: "https://github.com/ajcraig99/arch_hypr_dotfiles.git" 
 
     # 2. Official Arch Packages (Pacman)
     pacman_packages:

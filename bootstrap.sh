@@ -11,7 +11,7 @@ ansible-galaxy collection install community.general kewlfft.aur
 # ---------------------------------------------
 
 # 2. Clone the ANSIBLE Repo (Infrastructure)
-ANSIBLE_REPO="https://github.com/ajcraig99/arch-setup.git"
+ANSIBLE_REPO="https://github.com/ajcraig99/archlinux_ansible.git"
 SETUP_DIR="$HOME/arch-setup"
 
 if [ -d "$SETUP_DIR" ]; then
