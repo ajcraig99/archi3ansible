@@ -143,9 +143,6 @@
   # ----------------------------------------------------------------
   tasks:
 
-   - name: Create XDG user dirs
-     command: xdg-user-dirs-update
-
    # --- PRE-REQ: Enable Multilib (Needed for Steam) ---
     - name: Enable Multilib repository
       become: true
@@ -368,8 +365,8 @@
     - name: Restore Nemo dconf settings
       command: dconf load /org/nemo/ < {{ dotfiles_dir }}/.config/nemo/nemo-settings.dconf
       when: nemo_dconf.stat.exists
-      changed_when: false   
 
+    changed_when: false    
     - name: Install Timeshift
       become: true
       community.general.pacman:
