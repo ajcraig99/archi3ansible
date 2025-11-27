@@ -64,6 +64,7 @@
       # --- File Management ---
       - dolphin
       - nemo
+      - nemo-terminal
       - nemo-fileroller       
       - file-roller          
       - gvfs
