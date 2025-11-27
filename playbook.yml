@@ -1,51 +1,21 @@
 ---
-- name: Arch Linux VM Host Setup
+- name: Arch Linux Setup
   hosts: localhost
   connection: local
   
+  # ----------------------------------------------------------------
+  # VARIABLES: Edit these lists to customize your setup
+  # ----------------------------------------------------------------
   vars:
-    # Existing vars from your playbook
+    # 1. The folder where your dotfiles are currently located (Source)
+    #    If you cloned your repo to ~/dotfiles, leave as is.
     dotfiles_dir: "/home/{{ ansible_facts.user_id }}/dotfiles"
-    dotfiles_repo_url: "https://github.com/ajcraig99/arch_hypr_dotfiles.git"
-    
-    # VM Host specific packages
-    vm_host_packages:
-      # Core virtualization
-      - qemu-full              # Full QEMU with all architectures
-      - libvirt               # Virtualization API
-      - virt-manager          # GUI for managing VMs
-      - virt-viewer           # Viewer for VM displays
-      - dnsmasq               # DNS/DHCP for VM networks
-      - bridge-utils          # Network bridging utilities
-      - openbsd-netcat        # Networking utility
-      - ebtables              # Ethernet bridge filtering
-      # Note: iptables-nft removed due to conflict with iptables
-      - dmidecode             # Hardware information
-      
-      # UEFI/TPM support
-      - edk2-ovmf             # UEFI firmware for VMs
-      - swtpm                 # Software TPM emulator
-      
-      # Performance tools
-      - vde2                  # Virtual Distributed Ethernet
-      # Note: qemu-audio packages removed as they're included in qemu-full
-      
-      # SPICE support for better graphics
-      - spice                 # SPICE protocol
-      - spice-gtk             # SPICE GTK client
-      
-      # Additional tools
-      - libguestfs            # Tools for accessing VM filesystems
-      - virt-install          # Command line VM installation
-      
-    # AUR packages for virtualization
-    vm_aur_packages:
-      - virtio-win            # Windows virtio drivers
-      - looking-glass         # Low latency VM display (for GPU passthrough)
-    
-    # Your existing pacman packages (keeping them)
+    dotfiles_repo_url: "https://github.com/ajcraig99/arch_hypr_dotfiles.git" 
+
+    # 2. Official Arch Packages (Pacman)
     pacman_packages:
-      # --- System / Build ---
+
+# --- System / Build ---
       - base-devel
       - go
       - git
@@ -123,17 +93,17 @@
       # --- SDDM & Qt Dependencies ---
       - sddm
       - qt5-declarative
-      - qt5-quickcontrols
-      - qt5-quickcontrols2
+      - qt5-quickcontrols        # QtQuick.Controls 1.x (REQUIRED for Chili theme!)
+      - qt5-quickcontrols2       # QtQuick.Controls 2.x (for other themes)
       - qt5-graphicaleffects
       - qt5-svg
       
       # --- Storage Management ---
-      - cifs-utils
-      - ntfs-3g
-      - exfatprogs
+      - cifs-utils              # For SMB/CIFS shares
+      - ntfs-3g                 # For NTFS drives
+      - exfatprogs              # For exFAT drives
 
-    # Your existing AUR packages
+    # 3. AUR Packages (Yay)
     aur_packages:
       - google-chrome
       - visual-studio-code-bin
@@ -145,12 +115,15 @@
       - peazip-qt-bin
       - waybar-module-pacman-updates-git
       - zsh-theme-powerlevel10k-git
+
+      # --- Theming ---
       - catppuccin-gtk-theme-mocha
       - catppuccin-cursors-mocha
       - dracula-gtk-theme
       - dracula-icons-git
       
     symlinks:
+# Folders
       - { src: '.config/hypr',      dest: '.config/hypr' }
       - { src: '.config/waybar',    dest: '.config/waybar' }
       - { src: '.config/rofi',      dest: '.config/rofi' }
@@ -159,12 +132,17 @@
       - { src: '.config/nemo',      dest: '.config/nemo' }
       - { src: '.config/wlogout',   dest: '.config/wlogout' }
       - { src: '.config/wallpapers', dest: '.config/wallpapers' }
+      
+      # Individual Files
       - { src: '.zshrc',            dest: '.zshrc' }
       - { src: '.p10k.zsh',         dest: '.p10k.zsh' }
 
+  # ----------------------------------------------------------------
+  # TASKS: The logic that applies the variables above
+  # ----------------------------------------------------------------
   tasks:
-    # ===== EXISTING SETUP TASKS =====
-    
+
+   # --- PRE-REQ: Enable Multilib (Needed for Steam) ---
     - name: Enable Multilib repository
       become: true
       replace:
@@ -172,6 +150,7 @@
         regexp: '^#\[multilib\]\n#Include = /etc/pacman.d/mirrorlist'
         replace: '[multilib]\nInclude = /etc/pacman.d/mirrorlist'
 
+    # --- PRE-REQ: Remove PulseAudio (Conflicts with Pipewire) ---
     - name: Remove conflicting PulseAudio packages
       become: true
       community.general.pacman:
@@ -182,310 +161,15 @@
         state: absent
         force: yes
 
+    # --- STEP 1: Install Official Packages ---
     - name: Install Pacman packages
-      become: true
+      become: true  # Requires sudo
       community.general.pacman:
         name: "{{ pacman_packages }}"
         state: present
         update_cache: true
 
-    # ===== VIRTUALIZATION SETUP =====
-    
-    # Handle iptables conflict - libvirt requires iptables-nft on Arch
-    - name: Check current iptables implementation
-      command: pacman -Q iptables
-      register: iptables_check
-      failed_when: false
-      changed_when: false
-
-    - name: Remove conflicting iptables package if present
-      become: true
-      community.general.pacman:
-        name: iptables
-        state: absent
-        force: yes
-      when: iptables_check.rc == 0
-
-    - name: Install iptables-nft (required by libvirt)
-      become: true
-      community.general.pacman:
-        name: iptables-nft
-        state: present
-    
-    - name: Install virtualization packages
-      become: true
-      community.general.pacman:
-        name: "{{ vm_host_packages }}"
-        state: present
-        update_cache: true
-
-    - name: Check CPU virtualization support
-      command: grep -E 'vmx|svm' /proc/cpuinfo
-      register: cpu_virt_check
-      changed_when: false
-      failed_when: false
-
-    - name: Display virtualization support status
-      debug:
-        msg: |
-          {% if cpu_virt_check.rc == 0 %}
-          ✓ CPU virtualization extensions detected
-          {% else %}
-          ✗ No CPU virtualization extensions detected - check BIOS settings
-          {% endif %}
-
-    # --- Enable IOMMU for PCI Passthrough ---
-    - name: Check if system uses GRUB
-      stat:
-        path: /etc/default/grub
-      register: grub_config
-
-    - name: Check if system uses systemd-boot
-      stat:
-        path: /boot/loader/loader.conf
-      register: systemd_boot_config
-
-    - name: Enable IOMMU in GRUB (Intel)
-      become: true
-      lineinfile:
-        path: /etc/default/grub
-        regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
-        line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"'
-        backup: yes
-      when: 
-        - grub_config.stat.exists
-        - ansible_processor[1] is search("Intel")
-      notify: update grub
-
-    - name: Enable IOMMU in GRUB (AMD)
-      become: true
-      lineinfile:
-        path: /etc/default/grub
-        regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
-        line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"'
-        backup: yes
-      when: 
-        - grub_config.stat.exists
-        - ansible_processor[1] is search("AMD")
-      notify: update grub
-
-    - name: Enable IOMMU in systemd-boot (create entries directory)
-      become: true
-      file:
-        path: /boot/loader/entries
-        state: directory
-        mode: '0755'
-      when: systemd_boot_config.stat.exists
-
-    - name: Get current kernel version
-      command: uname -r
-      register: kernel_version
-      changed_when: false
-
-    - name: Configure systemd-boot entry for IOMMU
-      become: true
-      copy:
-        dest: /boot/loader/entries/arch-vm-host.conf
-        content: |
-          title   Arch Linux (VM Host)
-          linux   /vmlinuz-linux
-          initrd  /initramfs-linux.img
-          options root=PARTUUID={{ ansible_cmdline.root }} rw quiet {{ 'intel_iommu=on' if ansible_processor[1] is search('Intel') else 'amd_iommu=on' }} iommu=pt
-      when: systemd_boot_config.stat.exists
-
-    # --- Load necessary kernel modules ---
-    - name: Load virtualization kernel modules at boot
-      become: true
-      copy:
-        dest: /etc/modules-load.d/virt.conf
-        content: |
-          # Virtualization modules
-          kvm
-          {% if ansible_processor[1] is search("Intel") %}
-          kvm_intel
-          {% else %}
-          kvm_amd
-          {% endif %}
-          vhost_net
-          vhost_vsock
-          # VFIO modules for PCI passthrough
-          vfio
-          vfio_iommu_type1
-          vfio_pci
-          vfio_virqfd
-
-    - name: Configure KVM module parameters (Intel)
-      become: true
-      copy:
-        dest: /etc/modprobe.d/kvm-intel.conf
-        content: |
-          # Enable nested virtualization
-          options kvm_intel nested=1
-          # Enable APICv for better performance
-          options kvm_intel enable_apicv=1
-          options kvm_intel ept=1
-      when: ansible_processor[1] is search("Intel")
-
-    - name: Configure KVM module parameters (AMD)
-      become: true
-      copy:
-        dest: /etc/modprobe.d/kvm-amd.conf
-        content: |
-          # Enable nested virtualization
-          options kvm_amd nested=1
-          # Enable AVIC for better performance
-          options kvm_amd avic=1
-      when: ansible_processor[1] is search("AMD")
-
-    - name: Configure VFIO for PCI passthrough
-      become: true
-      copy:
-        dest: /etc/modprobe.d/vfio.conf
-        content: |
-          # VFIO configuration for PCI passthrough
-          # Add PCI IDs of devices to pass through (example for NVIDIA GPU)
-          # Run 'lspci -nn' to find your device IDs
-          # options vfio-pci ids=10de:2484,10de:228b
-          
-          # Prevent host drivers from grabbing devices
-          softdep nouveau pre: vfio-pci
-          softdep nvidia pre: vfio-pci
-          softdep nvidia* pre: vfio-pci
-          softdep amdgpu pre: vfio-pci
-          softdep radeon pre: vfio-pci
-
-    # --- User and permissions setup ---
-    - name: Add user to libvirt and kvm groups
-      become: true
-      user:
-        name: "{{ ansible_facts.user_id }}"
-        groups: libvirt,kvm
-        append: yes
-
-    # --- Libvirt configuration ---
-    - name: Configure libvirt to run as user
-      become: true
-      lineinfile:
-        path: /etc/libvirt/qemu.conf
-        regexp: "{{ item.regexp }}"
-        line: "{{ item.line }}"
-        backup: yes
-      loop:
-        - { regexp: '^#?user =', line: 'user = "{{ ansible_facts.user_id }}"' }
-        - { regexp: '^#?group =', line: 'group = "{{ ansible_facts.user_id }}"' }
-
-    - name: Configure libvirtd settings
-      become: true
-      lineinfile:
-        path: /etc/libvirt/libvirtd.conf
-        regexp: "{{ item.regexp }}"
-        line: "{{ item.line }}"
-        backup: yes
-      loop:
-        - { regexp: '^#?unix_sock_group =', line: 'unix_sock_group = "libvirt"' }
-        - { regexp: '^#?unix_sock_rw_perms =', line: 'unix_sock_rw_perms = "0770"' }
-
-    # --- Network configuration for VMs ---
-    - name: Create bridge network configuration
-      become: true
-      copy:
-        dest: /etc/libvirt/qemu/networks/br0.xml
-        content: |
-          <network>
-            <name>br0</name>
-            <forward mode='nat'>
-              <nat>
-                <port start='1024' end='65535'/>
-              </nat>
-            </forward>
-            <bridge name='virbr0' stp='on' delay='0'/>
-            <ip address='192.168.122.1' netmask='255.255.255.0'>
-              <dhcp>
-                <range start='192.168.122.2' end='192.168.122.254'/>
-              </dhcp>
-            </ip>
-          </network>
-
-    # --- Storage pool configuration ---
-    - name: Create VM storage directory
-      become: true
-      file:
-        path: /var/lib/libvirt/images
-        state: directory
-        owner: "{{ ansible_facts.user_id }}"
-        group: libvirt
-        mode: '0775'
-
-    # --- Performance tuning ---
-    - name: Configure hugepages for better VM performance
-      become: true
-      copy:
-        dest: /etc/sysctl.d/99-hugepages.conf
-        content: |
-          # Hugepages configuration for VMs
-          # Allocate 8GB of hugepages (4096 pages of 2MB each)
-          # Adjust based on your RAM and VM needs
-          vm.nr_hugepages = 4096
-          vm.hugetlb_shm_group = {{ ansible_facts.user_gid }}
-
-    - name: Configure CPU governor for better performance
-      become: true
-      copy:
-        dest: /etc/systemd/system/cpu-performance.service
-        content: |
-          [Unit]
-          Description=Set CPU governor to performance
-          After=multi-user.target
-          
-          [Service]
-          Type=oneshot
-          ExecStart=/usr/bin/cpupower frequency-set -g performance
-          RemainAfterExit=yes
-          
-          [Install]
-          WantedBy=multi-user.target
-
-    - name: Install cpupower utility
-      become: true
-      community.general.pacman:
-        name: cpupower
-        state: present
-
-    # --- Enable services ---
-    - name: Enable and start libvirtd service
-      become: true
-      systemd:
-        name: libvirtd
-        enabled: true
-        state: started
-
-    - name: Enable and start virtlogd service
-      become: true
-      systemd:
-        name: virtlogd
-        enabled: true
-        state: started
-
-    - name: Enable default network for libvirt
-      become: true
-      command: virsh net-autostart default
-      ignore_errors: yes
-      changed_when: false
-
-    - name: Start default network
-      become: true
-      command: virsh net-start default
-      ignore_errors: yes
-      changed_when: false
-
-    - name: Enable CPU performance service
-      become: true
-      systemd:
-        name: cpu-performance
-        enabled: true
-        daemon_reload: yes
-
-    # --- Install AUR packages ---
+    # --- PRE-REQ: Install Yay (AUR Helper) ---
     - name: Check if yay is installed
       command: which yay
       register: yay_check
@@ -512,6 +196,7 @@
       when: yay_check.rc != 0
       become: true
 
+    # --- Clone Dotfiles
     - name: Clone Dotfiles Repository
       git:
         repo: "{{ dotfiles_repo_url }}"
@@ -519,6 +204,7 @@
         update: yes
         force: yes
 
+    # 1. Allow 'sudo pacman' without a password temporarily
     - name: Allow passwordless sudo for pacman
       become: true
       lineinfile:
@@ -528,25 +214,21 @@
         mode: '0440'
         validate: 'visudo -cf %s'
 
+    # --- STEP 2: Install AUR Packages ---
     - name: Install AUR packages
       kewlfft.aur.aur:
         name: "{{ aur_packages }}"
         use: yay
         state: present
 
-    - name: Install VM-specific AUR packages
-      kewlfft.aur.aur:
-        name: "{{ vm_aur_packages }}"
-        use: yay
-        state: present
-
+    # 3. Clean up the permission file
     - name: Remove passwordless sudo for pacman
       become: true
       file:
         path: /etc/sudoers.d/10-ansible-pacman
         state: absent
-
-    # --- Continue with your existing dotfiles setup ---
+        
+# --- STEP 3: Create Directories ---
     - name: Ensure parent directories for configs exist
       file:
         path: "/home/{{ ansible_facts.user_id }}/{{ item.dest | dirname }}"
@@ -554,12 +236,16 @@
         mode: '0755'
       loop: "{{ symlinks }}"
 
+    # --- NEW TASK: Remove default config folders ---
+    # This deletes the default config folders created by package installation
+    # so that we can replace them with symlinks to your dotfiles.
     - name: Clean up default config directories
       file:
         path: "/home/{{ ansible_facts.user_id }}/{{ item.dest }}"
         state: absent
       loop: "{{ symlinks }}"
 
+    # --- STEP 4: Link Dotfiles ---
     - name: Create Symlinks
       file:
         src: "{{ dotfiles_dir }}/{{ item.src }}"
@@ -568,7 +254,7 @@
         force: yes
       loop: "{{ symlinks }}"
 
-    # --- NvChad Setup ---
+    # --- STEP 5: NvChad Setup ---
     - name: Back up existing Nvim config (if any)
       command: mv /home/{{ ansible_facts.user_id }}/.config/nvim /home/{{ ansible_facts.user_id }}/.config/nvim.bak
       args:
@@ -592,7 +278,7 @@
         dest: /home/{{ ansible_facts.user_id }}/.config/nvim
         depth: 1
 
-    # --- System Services & Tweaks ---
+    # --- STEP 6: System Services & Tweaks ---
     - name: Enable essential services
       become: true
       systemd:
@@ -600,11 +286,11 @@
         enabled: true
         state: started
       loop:
-        - NetworkManager
-        - bluetooth
-        - fstrim.timer
+        - NetworkManager      # Internet
+        - bluetooth           # Bluetooth
+        - fstrim.timer        # CRITICAL for SSD health (runs weekly)
 
-    # --- SDDM and theme setup ---
+    # --- STEP 7: SDDM with Chili Theme ---
     - name: Extract Chili theme to SDDM themes directory
       become: true
       unarchive:
@@ -642,7 +328,7 @@
         name: sddm
         enabled: true
 
-    # --- GTK Theme setup ---
+    # --- STEP 8: Apply Dark Theme (GTK) ---
     - name: Ensure GTK-3.0 directory exists
       file:
         path: "/home/{{ ansible_facts.user_id }}/.config/gtk-3.0"
@@ -678,8 +364,8 @@
     - name: Restore Nemo dconf settings
       command: dconf load /org/nemo/ < {{ dotfiles_dir }}/.config/nemo/nemo-settings.dconf
       when: nemo_dconf.stat.exists
-      changed_when: false
 
+    changed_when: false    
     - name: Install Timeshift
       become: true
       community.general.pacman:
@@ -705,78 +391,29 @@
       command: xdg-user-dirs-update
       changed_when: false
 
-    # --- Final virtualization check ---
-    - name: Check IOMMU groups (for PCI passthrough)
-      shell: |
-        #!/bin/bash
-        for d in /sys/kernel/iommu_groups/*/devices/*; do
-          n=${d#*/iommu_groups/*}; n=${n%%/*}
-          printf 'IOMMU Group %s: ' "$n"
-          lspci -nns "${d##*/}"
-        done
-      register: iommu_groups
-      changed_when: false
-      become: true
-      ignore_errors: yes
-
-    - name: Display VM host setup summary
+    - name: Display Timeshift setup info
       debug:
         msg: |
           
-          =====================================
-          VM Host Setup Complete
-          =====================================
+          ====================================
+          Timeshift Installed
+          ====================================
           
-          Installed:
-          ✓ QEMU/KVM with full system emulation
-          ✓ Libvirt management layer
-          ✓ Virt-Manager GUI
-          ✓ UEFI (OVMF) and TPM (swtpm) support
-          ✓ SPICE protocol for enhanced graphics
-          ✓ Network bridging and NAT
-          ✓ Hugepages support configured
+          To configure Timeshift:
+            sudo timeshift-gtk
           
-          Next Steps:
-          -----------
-          1. REBOOT to load new kernel parameters
+          Or run from application menu: "Timeshift"
           
-          2. After reboot, verify setup:
-             $ virsh list --all
-             $ virt-manager
-          
-          3. For GPU Passthrough:
-             a) Run: lspci -nn | grep -E "VGA|Audio"
-             b) Note the PCI IDs (e.g., 10de:2484)
-             c) Edit: /etc/modprobe.d/vfio.conf
-             d) Add: options vfio-pci ids=YOUR_IDS
-             e) Rebuild initramfs: mkinitcpio -P
-             f) Reboot
-          
-          4. Check IOMMU groups:
-             $ bash -c 'for d in /sys/kernel/iommu_groups/*/devices/*; do n=${d#*/iommu_groups/*}; n=${n%%/*}; printf "Group %s: " "$n"; lspci -nns "${d##*/}"; done'
-          
-          5. Performance Tuning:
-             - CPU isolation: isolcpus=4-7 (example)
-             - Pin VMs to specific CPUs
-             - Use hugepages for VMs
-          
-          6. Storage Pools:
-             Default: /var/lib/libvirt/images
-             Add more: virsh pool-define-as ...
-          
-          {% if iommu_groups.stdout %}
-          IOMMU Groups Detected:
-          ----------------------
-          {{ iommu_groups.stdout }}
-          {% endif %}
-
+          Recommended:
+          1. Select BTRFS or RSYNC mode
+          2. Choose snapshot location
+          3. Set up automatic snapshots schedule 
+  # ----------------------------------------------------------------
+  # HANDLERS: Actions triggered by notify
+  # ----------------------------------------------------------------
   handlers:
     - name: restart sddm
       become: true
       systemd:
         name: sddm.service
         state: restarted
-
-    - name: update grub
-      become: true
-      command: grub-mkconfig -o /boot/grub/grub.cfg
