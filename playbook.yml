@@ -255,7 +255,14 @@
         force: yes
       loop: "{{ symlinks }}"
 
-    # --- STEP 5: NvChad Setup ---
+    # --- STEP 5: Set Zsh as Default Shell ---
+    - name: Change default shell to zsh
+      become: true
+      user:
+        name: "{{ ansible_facts.user_id }}"
+        shell: /usr/bin/zsh
+
+    # --- STEP 6: NvChad Setup ---
     - name: Back up existing Nvim config (if any)
       command: mv /home/{{ ansible_facts.user_id }}/.config/nvim /home/{{ ansible_facts.user_id }}/.config/nvim.bak
       args:
@@ -279,7 +286,7 @@
         dest: /home/{{ ansible_facts.user_id }}/.config/nvim
         depth: 1
 
-    # --- STEP 6: System Services & Tweaks ---
+    # --- STEP 7: System Services & Tweaks ---
     - name: Enable essential services
       become: true
       systemd:
@@ -291,7 +298,7 @@
         - bluetooth           # Bluetooth
         - fstrim.timer        # CRITICAL for SSD health (runs weekly)
 
-    # --- STEP 7: SDDM with Chili Theme ---
+    # --- STEP 8: SDDM with Chili Theme ---
     - name: Extract Chili theme to SDDM themes directory
       become: true
       unarchive:
@@ -329,7 +336,7 @@
         name: sddm
         enabled: true
 
-    # --- STEP 8: Apply Dark Theme (GTK) ---
+    # --- STEP 9: Apply Dark Theme (GTK) ---
     - name: Ensure GTK-3.0 directory exists
       file:
         path: "/home/{{ ansible_facts.user_id }}/.config/gtk-3.0"
@@ -365,8 +372,8 @@
     - name: Restore Nemo dconf settings
       command: dconf load /org/nemo/ < {{ dotfiles_dir }}/.config/nemo/nemo-settings.dconf
       when: nemo_dconf.stat.exists
-
-    changed_when: false    
+      changed_when: false
+    
     - name: Install Timeshift
       become: true
       community.general.pacman:
