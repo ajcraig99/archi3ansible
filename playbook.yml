@@ -14,8 +14,7 @@
 
     # 2. Official Arch Packages (Pacman)
     pacman_packages:
-
-# --- System / Build ---
+      # --- System / Build ---
       - base-devel
       - go
       - git
@@ -28,6 +27,7 @@
       - usbutils
       - bluez
       - bluez-utils
+      - blueman
       - wget
       - nwg-displays
       - networkmanager
@@ -46,6 +46,7 @@
       - gimp
       - inkscape
       - yt-dlp
+      - spotify-launcher
 
       # --- Hyprland & Wayland Core ---
       - hyprland
@@ -124,7 +125,7 @@
       - dracula-icons-git
       
     symlinks:
-# Folders
+      # Folders
       - { src: '.config/hypr',      dest: '.config/hypr' }
       - { src: '.config/waybar',    dest: '.config/waybar' }
       - { src: '.config/rofi',      dest: '.config/rofi' }
@@ -142,8 +143,7 @@
   # TASKS: The logic that applies the variables above
   # ----------------------------------------------------------------
   tasks:
-
-   # --- PRE-REQ: Enable Multilib (Needed for Steam) ---
+    # --- PRE-REQ: Enable Multilib (Needed for Steam) ---
     - name: Enable Multilib repository
       become: true
       replace:
@@ -229,7 +229,7 @@
         path: /etc/sudoers.d/10-ansible-pacman
         state: absent
         
-# --- STEP 3: Create Directories ---
+    # --- STEP 3: Create Directories ---
     - name: Ensure parent directories for configs exist
       file:
         path: "/home/{{ ansible_facts.user_id }}/{{ item.dest | dirname }}"
@@ -373,7 +373,7 @@
       command: dconf load /org/nemo/ < {{ dotfiles_dir }}/.config/nemo/nemo-settings.dconf
       when: nemo_dconf.stat.exists
       changed_when: false
-    
+      
     - name: Install Timeshift
       become: true
       community.general.pacman:
@@ -416,6 +416,7 @@
           1. Select BTRFS or RSYNC mode
           2. Choose snapshot location
           3. Set up automatic snapshots schedule 
+
   # ----------------------------------------------------------------
   # HANDLERS: Actions triggered by notify
   # ----------------------------------------------------------------
